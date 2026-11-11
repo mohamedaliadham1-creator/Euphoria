@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">EUPHORIA</string>
+    <string name="widget_compact_desc">EUPHORIA Compact Player Widget</string>
+    <string name="widget_premium_desc">EUPHORIA Premium Player Widget</string>
+    <string name="widget_minimal_desc">EUPHORIA Minimal Player Widget</string>
+    <string name="widget_artwork_desc">EUPHORIA Artwork Player Widget</string>
+    <string name="widget_extended_desc">EUPHORIA Extended Player Widget</string>
+    <string name="developer_credit">Made by Adham Mohamed Ali</string>
+</resources>

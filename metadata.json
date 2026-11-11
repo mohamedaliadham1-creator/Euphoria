@@ -1,0 +1,6 @@
+{
+  "name": "EUPHORIA",
+  "description": "The ultimate personalizable Android music player made by Adham Mohamed Ali. Features 15+ built-in themes, wallpaper theme engine, Android home-screen widgets, sleep timer, audio fade effects, and metadata editing.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
