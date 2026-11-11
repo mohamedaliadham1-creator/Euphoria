@@ -5,30 +5,37 @@ on:
   workflow_dispatch:
 
 jobs:
-    build:
-      runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest
 
-      steps:
-        - name: Checkout Code
-          uses: actions/checkout@v4
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-        - name: Set up JDK 17
-          uses: actions/setup-java@v4
-          with:
-            distribution: 'temurin'
-            java-version: '17'
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
 
-        - name: Generate Gradle Wrapper
-          run: gradle wrapper
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
 
-        - name: Grant execute permission for gradlew
-          run: chmod +x gradlew
+      - name: Generate and Configure Gradle Wrapper
+        run: |
+          if [ ! -f ./gradlew ]; then
+            echo "Gradle wrapper not found. Downloading Gradle..."
+            wget https://services.gradle.org/distributions/gradle-8.5-bin.zip
+            unzip -q gradle-8.5-bin.zip
+            ./gradle-8.5/bin/gradle wrapper
+          fi
+          chmod +x gradlew
 
-        - name: Build Debug APK
-          run: ./gradlew assembleDebug
+      - name: Build Debug APK
+        run: ./gradlew assembleDebug
 
-        - name: Upload APK Artifact
-          uses: actions/upload-artifact@v4
-          with:
-            name: app-debug
-            path: app/build/outputs/apk/debug/app-debug.apk
+      - name: Upload APK Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-debug
+          path: app/build/outputs/apk/debug/app-debug.apk
